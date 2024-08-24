@@ -35,7 +35,7 @@ const Header = () => {
 
           <nav className="hidden md:flex space-x-4">
             {[
-              { name: 'Home', icon: Home, to: '/' },
+              { name: 'Home', icon: Home, to: '/home' },
               { name: 'About', icon: Info, to: '/about' },
               { name: 'Contact', icon: Phone, to: '/contact' },
             ].map((item) => (
