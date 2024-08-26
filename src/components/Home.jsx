@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import RestaurantCard from "./RestaurantCard";
 import ShimmerCard from "./ShimmerCard";
+import Search from "./Search";
 
 const Home = () => {
   const [originalData, setOriginalData] = useState([]);
@@ -22,7 +23,7 @@ const Home = () => {
 
       setOriginalData(restaurants);
       setCopyData(restaurants);
-
+      
     } catch (error) {
       console.error("Error while fetching data: ", error);
     } finally {
@@ -34,6 +35,8 @@ const Home = () => {
 
   return (
     <div className="bg-[#fcfcfcda] pt-5">
+      <Search resData={originalData} setResData={setCopyData} />
+
       <div className="px-4 sm:px-6 lg:px-8 xl:px-16">
         <div className="mb-6 sm:mb-8 lg:mb-10">
           <h2 className="text-xl md:text-2xl font-bold mb-6 px-10">
