@@ -37,6 +37,7 @@ const Header = () => {
             {[
               { name: 'Home', icon: Home, to: '/home' },
               { name: 'About', icon: Info, to: '/about' },
+              { name: 'Search', icon: Search, to: '/search' },
               { name: 'Contact', icon: Phone, to: '/contact' },
             ].map((item) => (
               <Link
@@ -80,7 +81,7 @@ const Header = () => {
       >
         <div className="px-2 pt-4 pb-3 space-y-1 sm:px-3">
           {[
-            { name: 'Home', icon: Home, to: '/' },
+            { name: 'Home', icon: Home, to: '/home' },
             { name: 'About', icon: Info, to: '/about' },
             { name: 'Contact', icon: Phone, to: '/contact' },
           ].map((item) => (
