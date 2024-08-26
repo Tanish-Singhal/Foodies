@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import RestaurantCard from "./RestaurantCard";
+import ShimmerCard from "./ShimmerCard";
 
 const Home = () => {
   const [originalData, setOriginalData] = useState([]);
@@ -26,35 +27,74 @@ const Home = () => {
     }
   };
 
+  const shimmerTopResCount = 5;
+  const shimmerAllResCount = 20;
+
   const topRatedRestaurants = originalData.filter(
     (restaurant) => restaurant.info.avgRating >= 4.5
   );
 
   return (
-    <div className="p-4 px-20">
-      <div className="mb-10">
-        <h2 className="text-2xl font-bold mb-2">Top Rated Restaurants</h2>
+    <div className="bg-[#fcfcfc] pt-4">
+      {isLoading ? (
+        <div className="p-4 px-20">
+          <div className="mb-10">
+            <h2 className="text-2xl font-bold mb-2">Top Rated Restaurants</h2>
 
-        <div className="flex justify-center items-center flex-wrap gap-6 p-4 sm:px-6 lg:px-20">
-          {topRatedRestaurants.length > 0 ? (
-            topRatedRestaurants.map((restaurant) => (
-              <RestaurantCard resData={restaurant} key={restaurant.info.id} />
-            ))
-          ) : (
-            <p className="text-gray-600 font-semibold text-xl">No top-rated restaurants available.</p>
-          )}
+            <div className="flex justify-center items-center flex-wrap gap-6 p-4 sm:px-6 lg:px-20">
+              {[...Array(shimmerTopResCount)].map((_, index) => (
+                <ShimmerCard key={index} />
+              ))}
+            </div>
+          </div>
+
+          <div className="mb-10">
+            <h2 className="text-2xl font-bold mb-2">
+              Restaurants with online food delivery
+            </h2>
+
+            <div className="flex justify-center items-center flex-wrap gap-6 p-4 sm:px-6 lg:px-20">
+              {[...Array(shimmerAllResCount)].map((_, index) => (
+                <ShimmerCard key={index} />
+              ))}
+            </div>
+          </div>
         </div>
-      </div>
 
-      <div className="mb-10">
-        <h2 className="text-2xl font-bold mb-2">Restaurants with online food delivery</h2>
+      ) : (
+        <div className="p-4 px-20">
+          <div className="mb-10">
+            <h2 className="text-2xl font-bold mb-2">Top Rated Restaurants</h2>
 
-        <div className="flex justify-center items-center flex-wrap gap-6 p-4 sm:px-6 lg:px-20">
-          {originalData.map((restaurant) => (
-            <RestaurantCard resData={restaurant} key={restaurant.info.id} />
-          ))}
+            <div className="flex justify-center items-center flex-wrap gap-6 p-4 sm:px-6 lg:px-20">
+              {topRatedRestaurants.length > 0 ? (
+                topRatedRestaurants.map((restaurant) => (
+                  <RestaurantCard
+                    resData={restaurant}
+                    key={restaurant.info.id}
+                  />
+                ))
+              ) : (
+                <p className="text-gray-600 font-semibold text-xl">
+                  No top-rated restaurants available.
+                </p>
+              )}
+            </div>
+          </div>
+
+          <div className="mb-10">
+            <h2 className="text-2xl font-bold mb-2">
+              Restaurants with online food delivery
+            </h2>
+
+            <div className="flex justify-center items-center flex-wrap gap-6 p-4 sm:px-6 lg:px-20">
+              {originalData.map((restaurant) => (
+                <RestaurantCard resData={restaurant} key={restaurant.info.id} />
+              ))}
+            </div>
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };
