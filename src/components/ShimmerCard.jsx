@@ -5,7 +5,7 @@ const ShimmerCard = () => {
   return (
     <div className="w-72 bg-white rounded-lg overflow-hidden shadow-lg transition-transform transform hover:scale-105">
       <div className="relative">
-        <div className="w-full h-48 bg-gray-200 animate-pulse"></div>
+        <div className="w-full h-44 bg-gray-200 animate-pulse"></div>
 
         <div className="absolute inset-0"></div>
 

@@ -18,12 +18,12 @@ const RestaurantCard = ({ resData }) => {
   const isTopRated = avgRating >= 4.5;
 
   return (
-    <div className="w-72 bg-white rounded-lg overflow-hidden shadow-lg transition-transform transform hover:scale-105">
+    <div className="w-64 bg-white rounded-lg overflow-hidden shadow-lg transition-transform transform hover:scale-105 lg:w-72">
       <div className="relative">
         <img
           src={import.meta.env.VITE_RESTAURANT_IMG_API + cloudinaryImageId}
           alt={name || "Restaurant Image"}
-          className="w-full h-48 object-cover"  
+          className="w-full h-44 object-cover"  
         />
         
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>

@@ -35,66 +35,74 @@ const Home = () => {
   );
 
   return (
-    <div className="bg-[#fcfcfc] pt-4">
-      {isLoading ? (
-        <div className="p-4 px-20">
-          <div className="mb-10">
-            <h2 className="text-2xl font-bold mb-2">Top Rated Restaurants</h2>
+    <div className="bg-[#fcfcfcda] pt-4">
+      <div className="px-4 sm:px-6 lg:px-8 xl:px-16">
+        {isLoading ? (
+          <div>
+            <div className="mb-10 lg:mb-12">
+              <h2 className="text-xl md:text-2xl font-bold mb-6 px-10">
+                Top Rated Restaurants
+              </h2>
 
-            <div className="flex justify-center items-center flex-wrap gap-6 p-4 sm:px-6 lg:px-20">
-              {[...Array(shimmerTopResCount)].map((_, index) => (
-                <ShimmerCard key={index} />
-              ))}
+              <div className="flex flex-col sm:flex-wrap sm:flex-row justify-center items-center gap-4 sm:gap-6">
+                {[...Array(shimmerTopResCount)].map((_, index) => (
+                  <ShimmerCard key={index} />
+                ))}
+              </div>
+            </div>
+
+            <div className="mb-6 sm:mb-8 lg:mb-10">
+              <h2 className="text-xl md:text-2xl font-bold mb-6 px-10">
+                Restaurants with online food delivery
+              </h2>
+
+              <div className="flex flex-col sm:flex-wrap sm:flex-row justify-center items-center gap-4 sm:gap-6">
+                {[...Array(shimmerAllResCount)].map((_, index) => (
+                  <ShimmerCard key={index} />
+                ))}
+              </div>
             </div>
           </div>
+        ) : (
+          <div>
+            <div className="mb-8 lg:mb-12">
+              <h2 className="text-xl md:text-2xl font-bold mb-6 px-10">
+                Top Rated Restaurants
+              </h2>
 
-          <div className="mb-10">
-            <h2 className="text-2xl font-bold mb-2">
-              Restaurants with online food delivery
-            </h2>
-
-            <div className="flex justify-center items-center flex-wrap gap-6 p-4 sm:px-6 lg:px-20">
-              {[...Array(shimmerAllResCount)].map((_, index) => (
-                <ShimmerCard key={index} />
-              ))}
+              <div className="flex flex-col sm:flex-wrap sm:flex-row justify-center items-center gap-4 sm:gap-6">
+                {topRatedRestaurants.length > 0 ? (
+                  topRatedRestaurants.map((restaurant) => (
+                    <RestaurantCard
+                      resData={restaurant}
+                      key={restaurant.info.id}
+                    />
+                  ))
+                ) : (
+                  <p className="text-gray-600 font-semibold text-lg sm:text-xl md:text-2xl">
+                    No top-rated restaurants available.
+                  </p>
+                )}
+              </div>
             </div>
-          </div>
-        </div>
 
-      ) : (
-        <div className="p-4 px-20">
-          <div className="mb-10">
-            <h2 className="text-2xl font-bold mb-2">Top Rated Restaurants</h2>
+            <div className="mb-6 sm:mb-8 lg:mb-10">
+              <h2 className="text-xl md:text-2xl font-bold mb-6 px-10">
+                Restaurants with online food delivery
+              </h2>
 
-            <div className="flex justify-center items-center flex-wrap gap-6 p-4 sm:px-6 lg:px-20">
-              {topRatedRestaurants.length > 0 ? (
-                topRatedRestaurants.map((restaurant) => (
+              <div className="flex flex-col sm:flex-wrap sm:flex-row justify-center items-center gap-4 sm:gap-6">
+                {originalData.map((restaurant) => (
                   <RestaurantCard
                     resData={restaurant}
                     key={restaurant.info.id}
                   />
-                ))
-              ) : (
-                <p className="text-gray-600 font-semibold text-xl">
-                  No top-rated restaurants available.
-                </p>
-              )}
+                ))}
+              </div>
             </div>
           </div>
-
-          <div className="mb-10">
-            <h2 className="text-2xl font-bold mb-2">
-              Restaurants with online food delivery
-            </h2>
-
-            <div className="flex justify-center items-center flex-wrap gap-6 p-4 sm:px-6 lg:px-20">
-              {originalData.map((restaurant) => (
-                <RestaurantCard resData={restaurant} key={restaurant.info.id} />
-              ))}
-            </div>
-          </div>
-        </div>
-      )}
+        )}
+      </div>
     </div>
   );
 };
