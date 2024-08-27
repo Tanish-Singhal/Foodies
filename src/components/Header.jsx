@@ -37,7 +37,6 @@ const Header = () => {
             {[
               { name: 'Home', icon: Home, to: '/home' },
               { name: 'About', icon: Info, to: '/about' },
-              { name: 'Search', icon: Search, to: '/search' },
               { name: 'Contact', icon: Phone, to: '/contact' },
             ].map((item) => (
               <Link
