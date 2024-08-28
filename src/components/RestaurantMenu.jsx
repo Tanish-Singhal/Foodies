@@ -23,7 +23,6 @@ const RestaurantMenu = () => {
 
       setInfo(info);
       setMenu(menu);
-      
     } catch (error) {
       console.error("Error fetching menu:", error);
     }
@@ -36,12 +35,13 @@ const RestaurantMenu = () => {
   return (
     <div className="px-[30rem] my-8">
       <RestaurantInfo info={info} />
-
-      {/* {filterCategories.map((category) => {
-        <MenuItems category={category.card?.card} key={category.card?.card?.title} />;
-      })} */}
+  
+      {filterCategories.map((category) => (
+        <MenuItems category={category.card?.card} key={category.card?.card?.title} />
+      ))}
     </div>
   );
+  
 };
 
 export default RestaurantMenu;
