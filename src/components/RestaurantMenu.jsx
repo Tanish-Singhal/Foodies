@@ -33,15 +33,15 @@ const RestaurantMenu = () => {
   );
 
   return (
-    <div className="px-[30rem] my-8">
-      <RestaurantInfo info={info} />
-  
-      {filterCategories.map((category) => (
-        <MenuItems category={category.card?.card} key={category.card?.card?.title} />
-      ))}
+    <div className="px-4 sm:px-6 lg:px-8 my-4 max-w-screen-lg mx-auto">
+      <div className="max-w-full">
+        <RestaurantInfo info={info} />
+        {filterCategories.map((category) => (
+          <MenuItems category={category.card?.card} key={category.card?.card?.title} />
+        ))}
+      </div>
     </div>
   );
-  
 };
 
 export default RestaurantMenu;

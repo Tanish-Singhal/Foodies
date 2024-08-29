@@ -7,16 +7,16 @@ const ItemList = ({ items }) => {
       {items.map((item) => (
         <div
           key={item.card.info.id}
-          className="bg-white rounded-lg shadow-md overflow-hidden"
+          className="bg-white rounded-lg shadow-md overflow-hidden flex flex-col sm:flex-row"
         >
-          <div className="flex flex-col sm:flex-row">
-            <div className="flex-1 p-4">
+          <div className="flex-1 p-4 flex flex-col justify-between order-2 sm:order-1">
+            <div>
               <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4">
                 <div className="mb-2 sm:mb-0">
-                  <h2 className="text-lg font-semibold text-gray-900">
+                  <h2 className="text-md sm:text-lg font-semibold text-gray-900">
                     {item?.card?.info?.name}
                   </h2>
-                  <p className="text-sm font-medium text-gray-700">
+                  <p className="text-md font-medium text-gray-700">
                     ₹{" "}
                     {item.card.info.price
                       ? item.card.info.price / 100
@@ -35,22 +35,22 @@ const ItemList = ({ items }) => {
                   </div>
                 )}
               </div>
-              <p className="text-sm text-gray-600 line-clamp-2 sm:line-clamp-3">
+              <p className="text-xs sm:text-sm text-gray-600 line-clamp-2 sm:line-clamp-3">
                 {item.card.info.description}
               </p>
             </div>
-            <div className="relative w-full sm:w-32 h-32 sm:h-auto">
-              <img
-                className="w-full h-full object-cover rounded-md"
-                src={`${import.meta.env.VITE_MENU_ITEM_IMG}${
-                  item.card.info.imageId
-                }`}
-                alt={item.card.info.name}
-              />
-              <button className="absolute bottom-1 left-8 bg-white text-orange-500 hover:bg-orange-400 hover:text-white font-bold p-2 px-4 rounded-md shadow-md transition-all">
+            <div className="flex items-center justify-center mt-4">
+              <button className="bg-white text-orange-500 hover:bg-orange-400 hover:text-white font-bold p-2 rounded-md shadow-md transition-all w-full">
                 ADD
               </button>
             </div>
+          </div>
+          <div className="w-full sm:w-32 h-32 sm:h-auto order-1 sm:order-2">
+            <img
+              className="w-full h-full object-cover"
+              src={`${import.meta.env.VITE_MENU_ITEM_IMG}${item.card.info.imageId}`}
+              alt={item.card.info.name}
+            />
           </div>
         </div>
       ))}
