@@ -18,7 +18,7 @@ const Search = ({ resData, setResData }) => {
           type="search"
           name="search"
           id="search"
-          placeholder="Search for Pizza"
+          placeholder="Search for Domino's Pizza"
           className="p-2 px-4 rounded-md border outline-none focus-within:border-orange-400 border-gray-200 grow transition duration-300 ease-in-out"
           onChange={(e) => {
             setSearchedValue(e.target.value);
