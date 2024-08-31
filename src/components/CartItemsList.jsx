@@ -1,7 +1,7 @@
 import React from "react";
 import { Trash2, Plus, Minus } from "lucide-react";
 import { useDispatch } from "react-redux";
-import {removeFromCart} from "../redux/slices/cartSlice";
+import { removeFromCart, increaseItemQuantity, decreaseItemQuantity } from "../redux/slices/cartSlice";
 
 const CartItemsList = ({ item }) => {
   const { name, finalPrice, defaultPrice, imageId, id } = item.item.card.info;
@@ -11,6 +11,14 @@ const CartItemsList = ({ item }) => {
 
   const handleRemoveItem = (id) => {
     dispatch(removeFromCart(id));
+  };
+
+  const handleIncreaseQuantity = (id) => {
+    dispatch(increaseItemQuantity(id));
+  };
+
+  const handleDecreaseQuantity = (id) => {
+    dispatch(decreaseItemQuantity(id));
   };
 
   return (
@@ -23,17 +31,21 @@ const CartItemsList = ({ item }) => {
 
       <div className="flex-grow text-center md:text-left">
         <h3 className="text-lg md:text-xl font-semibold text-gray-800">{name}</h3>
-        <p className="text-indigo-600 font-medium mt-1">₹{finalPrice ? (finalPrice/100).toFixed(2) : (defaultPrice/100).toFixed(2)}</p>
+        <p className="text-indigo-600 font-medium mt-1">
+          ₹{finalPrice ? (finalPrice / 100).toFixed(2) : (defaultPrice / 100).toFixed(2)}
+        </p>
       </div>
 
       <div className="flex items-center mt-4 md:mt-0">
         <button
+          onClick={() => handleDecreaseQuantity(id)}
           className="p-1 md:p-2 rounded-full bg-gray-200 hover:bg-indigo-200 transition-colors duration-200"
         >
           <Minus size={14} />
         </button>
         <span className="mx-2 md:mx-4 font-semibold text-gray-700">{quantity}</span>
         <button
+          onClick={() => handleIncreaseQuantity(id)}
           className="p-1 md:p-2 rounded-full bg-gray-200 hover:bg-indigo-200 transition-colors duration-200"
         >
           <Plus size={14} />
