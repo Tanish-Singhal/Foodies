@@ -1,9 +1,17 @@
 import React from "react";
 import { Trash2, Plus, Minus } from "lucide-react";
+import { useDispatch } from "react-redux";
+import {removeFromCart} from "../redux/slices/cartSlice";
 
 const CartItemsList = ({ item }) => {
-  const { name, finalPrice, defaultPrice, imageId } = item.item.card.info;
+  const { name, finalPrice, defaultPrice, imageId, id } = item.item.card.info;
   const { quantity } = item;
+
+  const dispatch = useDispatch();
+
+  const handleRemoveItem = (id) => {
+    dispatch(removeFromCart(id));
+  };
 
   return (
     <div className="flex flex-col md:flex-row items-center justify-between bg-white shadow-lg rounded-lg p-4 md:p-6 mb-6 md:gap-6 transition-all duration-300 hover:shadow-xl transform hover:-translate-y-1">
@@ -33,6 +41,7 @@ const CartItemsList = ({ item }) => {
       </div>
 
       <button
+        onClick={() => handleRemoveItem(id)}
         className="mt-4 md:mt-0 text-red-500 rounded-full p-1 md:p-2 hover:bg-red-200 transition-colors duration-200"
       >
         <Trash2 size={20} />
