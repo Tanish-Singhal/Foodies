@@ -1,7 +1,15 @@
 import React from "react";
 import { StarIcon } from "lucide-react";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../redux/slices/cartSlice";
 
 const ItemList = ({ items }) => {
+  const dispatch = useDispatch();
+
+  const handleToCart = (item) => {
+    dispatch(addToCart(item));
+  };
+
   return (
     <div className="space-y-4 mt-4">
       {items.map((item) => (
@@ -40,7 +48,12 @@ const ItemList = ({ items }) => {
               </p>
             </div>
             <div className="flex items-center justify-center mt-4">
-              <button className="bg-white text-orange-500 hover:bg-orange-400 hover:text-white font-bold p-2 rounded-md shadow-md transition-all w-full">
+              <button
+                onClick={() => {
+                  handleToCart(item)
+                }}
+                className="bg-white text-orange-500 hover:bg-orange-400 hover:text-white font-bold p-2 rounded-md shadow-md transition-all w-full"
+              >
                 ADD
               </button>
             </div>
