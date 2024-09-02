@@ -29,11 +29,13 @@ const RestaurantInfo = ({ info }) => {
         <div className="flex flex-col items-center border rounded-lg border-gray-300 p-4">
           <p className="flex items-center gap-1 mb-1 text-green-500 text-lg sm:text-xl">
             <StarIcon className="w-4 h-4 fill-current" /> 
-            <div className="font-semibold">
+            <span className="font-semibold">
               {avgRatingString}
-            </div>
+            </span>
           </p>
-          <p className="text-xs sm:text-sm border-t font-semibold text-gray-500 border-gray-300 pt-1">{totalRatingsString}</p>
+          <p className="text-xs sm:text-sm border-t font-semibold text-gray-500 border-gray-300 pt-1">
+            {totalRatingsString}
+          </p>
         </div>
       </div>
       <div className="mt-4 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
