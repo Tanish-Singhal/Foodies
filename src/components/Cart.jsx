@@ -1,6 +1,7 @@
 import React from "react";
 import { ShoppingCart } from "lucide-react";
 import CartItemsList from "./CartItemsList";
+import OrderSummary from "./OrderSummary";
 import { useSelector } from "react-redux";
 
 const Cart = () => {
@@ -25,6 +26,10 @@ const Cart = () => {
                 </p>
               </div>
             )}
+          </div>
+
+          <div className="lg:sticky lg:top-8">
+            <OrderSummary />
           </div>
         </div>
       </div>
