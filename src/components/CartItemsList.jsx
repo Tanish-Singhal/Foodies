@@ -4,7 +4,8 @@ import { useDispatch } from "react-redux";
 import { removeFromCart, increaseItemQuantity, decreaseItemQuantity } from "../redux/slices/cartSlice";
 
 const CartItemsList = ({ item }) => {
-  const { name, finalPrice, defaultPrice, imageId, id } = item.item.card.info;
+  console.log(item);
+  const { name, finalPrice, defaultPrice, price, imageId, id } = item.item.card.info;
   const { quantity } = item;
 
   const dispatch = useDispatch();
@@ -21,6 +22,8 @@ const CartItemsList = ({ item }) => {
     dispatch(decreaseItemQuantity(id));
   };
 
+  const displayPrice = finalPrice ?? defaultPrice ?? price;
+
   return (
     <div className="flex flex-col md:flex-row items-center justify-between bg-white shadow-lg rounded-lg p-4 md:p-6 mb-6 md:gap-6 transition-all duration-300 hover:shadow-xl transform hover:-translate-y-1">
       <img
@@ -32,7 +35,7 @@ const CartItemsList = ({ item }) => {
       <div className="flex-grow text-center md:text-left">
         <h3 className="text-lg md:text-xl font-semibold text-gray-800">{name}</h3>
         <p className="text-indigo-600 font-medium mt-1">
-          ₹{finalPrice ? (finalPrice / 100).toFixed(2) : (defaultPrice / 100).toFixed(2)}
+          ₹{(displayPrice / 100).toFixed(2)}
         </p>
       </div>
 
