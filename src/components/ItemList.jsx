@@ -2,12 +2,20 @@ import React from "react";
 import { StarIcon } from "lucide-react";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../redux/slices/cartSlice";
+import toast from "react-hot-toast";
 
 const ItemList = ({ items }) => {
   const dispatch = useDispatch();
 
   const handleToCart = (item) => {
     dispatch(addToCart(item));
+    toast.success('Item added to cart', {
+      style: {
+        borderRadius: '10px',
+        background: '#333',
+        color: '#fff',
+      },
+    });
   };
 
   return (

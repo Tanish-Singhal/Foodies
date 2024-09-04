@@ -2,6 +2,7 @@ import React from "react";
 import { Trash2, Plus, Minus } from "lucide-react";
 import { useDispatch } from "react-redux";
 import { removeFromCart, increaseItemQuantity, decreaseItemQuantity } from "../redux/slices/cartSlice";
+import { toast } from "react-hot-toast";
 
 const CartItemsList = ({ item }) => {
   console.log(item);
@@ -12,6 +13,13 @@ const CartItemsList = ({ item }) => {
 
   const handleRemoveItem = (id) => {
     dispatch(removeFromCart(id));
+    toast.success('Item removed from the cart', {
+      style: {
+        borderRadius: '10px',
+        background: '#333',
+        color: '#fff',
+      },
+    });
   };
 
   const handleIncreaseQuantity = (id) => {

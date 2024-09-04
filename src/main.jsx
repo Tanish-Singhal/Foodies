@@ -12,6 +12,7 @@ import Error from "./components/Error";
 import RestaurantMenu from "./components/RestaurantMenu";
 import { Provider } from "react-redux";
 import { store } from "./redux/store";
+import { Toaster } from "react-hot-toast";
 
 const appRouter = createBrowserRouter([
   {
@@ -49,6 +50,7 @@ const appRouter = createBrowserRouter([
 
 createRoot(document.getElementById("root")).render(
   <Provider store={store}>
+    <Toaster />
     <RouterProvider router={appRouter} />
   </Provider>
 );

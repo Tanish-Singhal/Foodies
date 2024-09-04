@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { ShoppingBag, Truck, Receipt, CheckCircle } from "lucide-react";
+import {toast} from "react-hot-toast"
 
 const OrderSummary = () => {
   const items = useSelector((state) => state.cart.items);
