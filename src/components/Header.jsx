@@ -28,7 +28,7 @@ const Header = () => {
       <div className="flex justify-between items-center">
         <div className="flex items-center">
           <Link to="/" className="text-2xl font-bold text-orange-500 hover:text-orange-600 transition-colors duration-300">
-            Foodies🍔
+            Foodies
           </Link>
           <div className="hidden md:flex items-center ml-6 text-sm text-gray-600">
             <MapPin className="w-4 h-4 mr-1" />

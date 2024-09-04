@@ -15,13 +15,12 @@ const Home = () => {
 
   const fetchRestaurants = async () => {
     try {
-      const response = await fetch(import.meta.env.VITE_SWIGGY_MAIN_API);
+      const response = await fetch('https://foodies-server-xi.vercel.app/api/restaurants');
       const json = await response.json();
-
+  
       const restaurants =
-        json.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
-          ?.restaurants || [];
-
+        json.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants || [];
+  
       setOriginalData(restaurants);
       setCopyData(restaurants);
     } catch (error) {

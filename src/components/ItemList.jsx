@@ -23,7 +23,7 @@ const ItemList = ({ items }) => {
       {items.map((item) => (
         <div
           key={item.card.info.id}
-          className="bg-white rounded-lg shadow-md overflow-hidden flex flex-col sm:flex-row"
+          className="bg-white rounded-lg shadow-md overflow -hidden flex flex-col sm:flex-row"
         >
           <div className="flex-1 p-4 flex flex-col justify-between order-2 sm:order-1">
             <div>
@@ -69,7 +69,7 @@ const ItemList = ({ items }) => {
           <div className="w-full sm:w-32 h-32 sm:h-auto order-1 sm:order-2">
             <img
               className="w-full h-full object-cover"
-              src={`${import.meta.env.VITE_MENU_ITEM_IMG}${item.card.info.imageId}`}
+              src={`https://foodies-server-xi.vercel.app/api/restaurant-images/${item.card.info.imageId}`}
               alt={item.card.info.name}
             />
           </div>

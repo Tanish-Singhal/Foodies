@@ -18,12 +18,13 @@ const RestaurantMenu = () => {
 
   const fetchMenu = async () => {
     try {
-      const response = await fetch(import.meta.env.VITE_RESTAURANT_MENU_URL + params.id);
+      const response = await fetch(`https://foodies-server-xi.vercel.app/api/restaurant-menu/${params.id}`);
+  
       const json = await response.json();
-
-      const info = json.data.cards[2].card.card.info;
-      const menu = json.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards;
-
+  
+      const info = json.data.cards[2]?.card?.card?.info;
+      const menu = json.data.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards;
+  
       setInfo(info);
       setMenu(menu);
     } catch (error) {
@@ -32,6 +33,7 @@ const RestaurantMenu = () => {
       setIsLoading(false);
     }
   };
+  
 
   const filterCategories =
     menu.filter(
