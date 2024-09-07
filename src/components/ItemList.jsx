@@ -69,7 +69,7 @@ const ItemList = ({ items }) => {
           <div className="w-full sm:w-32 h-32 sm:h-auto order-1 sm:order-2">
             <img
               className="w-full h-full object-cover"
-              src={`https://foodies-server-xi.vercel.app/api/restaurant-images/${item.card.info.imageId}`}
+              src={`https://foodies-backend-no21.onrender.com/api/restaurant-images/${item.card.info.imageId}`}
               alt={item.card.info.name}
             />
           </div>

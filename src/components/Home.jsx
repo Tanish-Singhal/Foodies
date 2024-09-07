@@ -15,7 +15,7 @@ const Home = () => {
 
   const fetchRestaurants = async () => {
     try {
-      const response = await fetch('https://foodies-server-xi.vercel.app/api/restaurants');
+      const response = await fetch('https://foodies-backend-no21.onrender.com/api/restaurants');
       const json = await response.json();
   
       const restaurants =
