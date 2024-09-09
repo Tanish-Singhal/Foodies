@@ -13,6 +13,10 @@ const RestaurantMenu = () => {
   const params = useParams();
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
     fetchMenu();
   }, [params.id]);
 

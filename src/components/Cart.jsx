@@ -1,10 +1,15 @@
 import React from "react";
+import { useEffect } from "react";
 import { ShoppingCart } from "lucide-react";
 import CartItemsList from "./CartItemsList";
 import OrderSummary from "./OrderSummary";
 import { useSelector } from "react-redux";
 
 const Cart = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const { items } = useSelector((state) => state.cart);
 
   return (
