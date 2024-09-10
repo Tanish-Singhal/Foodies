@@ -11,7 +11,7 @@ const MenuItems = ({ category }) => {
 
   return (
     <div className="mx-auto my-4 p-4 border-2 rounded-lg bg-gray-50 cursor-pointer max-w-full">
-      <div className="flex flex-col sm:flex-row sm:justify-between cursor-pointer" onClick={handleClick}>
+      <div className="flex sm:flex-row justify-between cursor-pointer" onClick={handleClick}>
         <div className="font-bold text-lg">
           {category?.title} ({category.itemCards.length})
         </div>
