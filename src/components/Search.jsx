@@ -4,12 +4,18 @@ import { useState } from "react";
 const Search = ({ resData, setResData }) => {
   const [searchedValue, setSearchedValue] = useState("");
 
-  const handleSearch = () => {
+  const handleSearch = (value) => {
     const filteredRestaurants = resData.filter((restaurant) =>
-      restaurant.info.name.toLowerCase().includes(searchedValue.toLowerCase())
+      restaurant.info.name.toLowerCase().includes(value.toLowerCase())
     );
     setResData(filteredRestaurants);
   };
+
+  const handleInputChange = (e) => {
+    const value = e.target.value;
+    setSearchedValue(e);
+    handleSearch(value);
+  }
 
   return (
     <div className="pt-5">
@@ -20,9 +26,7 @@ const Search = ({ resData, setResData }) => {
           id="search"
           placeholder="Search for Domino's Pizza"
           className="p-2 px-4 rounded-md border outline-none focus-within:border-orange-400 border-gray-200 grow transition duration-300 ease-in-out"
-          onChange={(e) => {
-            setSearchedValue(e.target.value);
-          }}
+          onChange={handleInputChange}
         />
 
         <button
