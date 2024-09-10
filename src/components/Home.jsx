@@ -37,12 +37,12 @@ const Home = () => {
   const shimmerAllResCount = 20;
 
   return (
-    <div className="bg-[#fcfcfcda] pt-5">
+    <div className="bg-[#fcfcfcda] md:pt-2">
       <Search resData={originalData} setResData={setCopyData} />
 
-      <div className="px-4 sm:px-6 lg:px-8 xl:px-16">
+      <div className="px-4 sm:px-6 lg:px-8 xl:px-16 md:pt-5 pt-2">
         <div className="mb-6 sm:mb-8 lg:mb-10">
-          <h2 className="text-xl md:text-2xl font-bold mb-6 px-10">
+          <h2 className="text-2xl md:text-2xl font-bold mb-6 px-6 text-center">
             Restaurants with online food delivery
           </h2>
 

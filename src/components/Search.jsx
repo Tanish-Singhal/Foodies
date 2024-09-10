@@ -13,7 +13,7 @@ const Search = ({ resData, setResData }) => {
 
   return (
     <div className="pt-5">
-      <div className="flex mx-auto max-w-[560px] gap-3 w-full px-4 mb-6">
+      <div className="flex mx-auto max-w-[560px] gap-3 w-full px-3 mb-6">
         <input
           type="search"
           name="search"
