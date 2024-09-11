@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import { ShoppingBag, Truck, Receipt, CheckCircle } from "lucide-react";
-import {toast} from "react-hot-toast"
+import { ShoppingBag, Truck, Receipt, CheckCircle, PartyPopper } from "lucide-react";
+import { toast } from "react-hot-toast";
 
 const OrderSummary = () => {
   const items = useSelector((state) => state.cart.items);
@@ -16,8 +16,9 @@ const OrderSummary = () => {
 
   const baseDeliveryCost = 50;
   const deliveryCost = subTotal > 500 ? 0 : baseDeliveryCost;
+  const discount = subTotal > 500 ? subTotal * 0.2 : 0;
   const gstTax = subTotal * 0.1;
-  const totalCost = subTotal + deliveryCost + gstTax;
+  const totalCost = subTotal + deliveryCost + gstTax - discount;
 
   const handleOrder = () => {
     setIsOrdering(true);
@@ -65,6 +66,16 @@ const OrderSummary = () => {
           </span>
           <span className={`font-medium ${deliveryCost === 0 ? "text-green-500" : ""}`}>
             {deliveryCost === 0 ? "FREE" : `₹${deliveryCost.toFixed(2)}`}
+          </span>
+        </div>
+
+        <div className="flex justify-between items-center text-base md:text-lg text-gray-700">
+          <span className="flex items-center">
+            <PartyPopper className="mr-2 text-gray-500" size={20} />
+            Discount (20%)
+          </span>
+          <span className={`font-medium ${discount === 0 ? "text-red-500 font-semibold" : ""}`}>
+            {discount === 0 ? "None" : `-₹${discount.toFixed(2)}`}
           </span>
         </div>
 
