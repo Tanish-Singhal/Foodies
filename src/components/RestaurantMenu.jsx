@@ -1,15 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useParams } from "react-router-dom";
 import RestaurantInfo from "./RestaurantInfo";
 import MenuItems from "./MenuItems";
 import RestaurantInfoLoading from "./RestaurantInfoLoading";
 import MenuItemsLoading from "./MenuItemsLoading";
+import LoadingBar from 'react-top-loading-bar';
 
 const RestaurantMenu = () => {
   const [info, setInfo] = useState([]);
   const [menu, setMenu] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-
+  const loadingBarRef = useRef(null);
+  
   const params = useParams();
 
   useEffect(() => {
@@ -21,6 +23,8 @@ const RestaurantMenu = () => {
   }, [params.id]);
 
   const fetchMenu = async () => {
+    loadingBarRef.current.continuousStart();
+    setIsLoading(true);
     try {
       const response = await fetch(`https://foodies-backend-no21.onrender.com/api/restaurant-menu/${params.id}`);
   
@@ -34,10 +38,10 @@ const RestaurantMenu = () => {
     } catch (error) {
       console.error("Error fetching menu:", error);
     } finally {
+      loadingBarRef.current.complete();
       setIsLoading(false);
     }
   };
-  
 
   const filterCategories =
     menu.filter(
@@ -47,6 +51,12 @@ const RestaurantMenu = () => {
 
   return (
     <div className="px-4 sm:px-6 lg:px-8 my-4 max-w-screen-lg mx-auto">
+      <LoadingBar
+        color="#f97316"
+        ref={loadingBarRef}
+        onLoaderFinished={() => loadingBarRef.current.complete()}
+        style={{ height: '4px' }}
+      />
       <div className="max-w-full">
         {isLoading ? (
           <div>

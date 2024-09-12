@@ -1,13 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import RestaurantCard from "./RestaurantCard";
 import ShimmerCard from "./ShimmerCard";
 import Search from "./Search";
 import { Link } from "react-router-dom";
+import LoadingBar from 'react-top-loading-bar';
 
 const Home = () => {
   const [originalData, setOriginalData] = useState([]);
   const [copyData, setCopyData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const loadingBarRef = useRef(null);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -18,6 +20,8 @@ const Home = () => {
   }, []);
 
   const fetchRestaurants = async () => {
+    loadingBarRef.current.continuousStart();
+    setIsLoading(true);
     try {
       const response = await fetch('https://foodies-backend-no21.onrender.com/api/restaurants');
       const json = await response.json();
@@ -30,6 +34,7 @@ const Home = () => {
     } catch (error) {
       console.error("Error while fetching data: ", error);
     } finally {
+      loadingBarRef.current.complete();
       setIsLoading(false);
     }
   };
@@ -38,6 +43,13 @@ const Home = () => {
 
   return (
     <div className="bg-[#fcfcfcda] md:pt-2">
+      <LoadingBar
+        color="#f97316"
+        ref={loadingBarRef}
+        onLoaderFinished={() => loadingBarRef.current.complete()}
+        style={{ height: '4px' }}
+      />
+      
       <Search resData={originalData} setResData={setCopyData} />
 
       <div className="px-4 sm:px-6 lg:px-8 xl:px-16 md:pt-5 pt-2">
